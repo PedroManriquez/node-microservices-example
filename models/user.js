@@ -1,9 +1,27 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const user = sequelize.define('user', {
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
-		country_id: DataTypes.INTEGER,
+    name: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+				isAlpha: true,
+				strLength (value) {
+					if (value.length <= 2) throw new Error('Name contains two or more characters!');
+				}
+			}
+		},
+    email: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+				isEmail: true
+			}
+		},
+		country_id: {
+			type: DataTypes.INTEGER,
+			allowNull: false
+		},
   }, {
     underscored: true,
   });
