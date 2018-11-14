@@ -23,8 +23,6 @@
   "dependencies": {
     "ioredis": "^3.2.2",
     "moleculer": "^0.13.0",
-    "moleculer-db": "^0.7.6",
-    "moleculer-db-adapter-sequelize": "^0.1.10",
     "moleculer-web": "^0.8.0",
     "mysql2": "^1.6.4",
     "sequelize": "^4.41.2"
