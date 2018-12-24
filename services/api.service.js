@@ -25,7 +25,8 @@ module.exports = {
 				"GET countries": "countries.index",
 				"POST countries": "countries.create",
 				"GET users": "users.index",
-        "POST users": "users.create"
+				"POST users": "users.create",
+				"POST login": "logins.authenticate"
 			}
 		}],
 

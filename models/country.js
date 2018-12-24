@@ -3,9 +3,9 @@ module.exports = (sequelize, DataTypes) => {
   const country = sequelize.define('country', {
     name: {
 			type: DataTypes.STRING,
-			allowNull: false,
+      allowNull: false,
+      unique: true,
 			validate: {
-				isAlpha: true,
 				strLength (value) {
 					if (value.length <= 2) throw new Error('Name contains two or more characters!');
 				}
@@ -17,5 +17,6 @@ module.exports = (sequelize, DataTypes) => {
   country.associate = models => {
     // associations can be defined here
   };
+  country.sync({ force: true });
   return country;
 };

@@ -29,7 +29,7 @@ module.exports = {
       return this.all();
     },
     create (ctx) {
-      return this.store()
+      return this.store(ctx)
     }
   },
 
@@ -47,9 +47,9 @@ module.exports = {
 		all () {
 			return Country.findAll();
 		},
-		store () {
+		store (payload) {
 			return Country
-        .create(ctx.params)
+        .create(payload.params)
         .then(data => data)
         .catch(error => error);
 		}

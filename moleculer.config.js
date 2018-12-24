@@ -1,18 +1,18 @@
-"use strict";
+'use strict';
 
 // More info about options: https://moleculer.services/docs/0.13/broker.html#Broker-options
 module.exports = {
-	namespace: "",
+	namespace: '',
 	nodeID: null,
 
 	logger: true,
-	logLevel: "info",
-	logFormatter: "default",
+	logLevel: 'info',
+	logFormatter: 'default',
 	logObjectPrinter: null,
 
-	transporter: "Redis",
+	transporter: 'Redis',
 
-	serializer: "JSON",
+	serializer: 'JSON',
 
 	requestTimeout: 10 * 1000,
 	retryPolicy: {
@@ -36,7 +36,7 @@ module.exports = {
 	disableBalancer: false,
 
 	registry: {
-		strategy: "RoundRobin",
+		strategy: 'RoundRobin',
 		preferLocal: true
 	},
 

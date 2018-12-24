@@ -1,17 +1,16 @@
-"use strict";
+'use strict';
 
-const User = require("../models").user;
-const Country = require("../models").country;
+const User = require('../models').user;
+const Country = require('../models').country;
 
 module.exports = {
-  name: "users",
+  name: 'users',
   /**
    * Service settings
    */
   settings: {
 
   },
-
   /**
    * Service dependencies
    */
@@ -29,14 +28,16 @@ module.exports = {
      */
     index () {
       return User.findAll({
-				include: [Country]
-			});
+        include: [Country]
+      });
     },
     create (ctx) {
-      return User
-        .create(ctx.params)
-        .then(data => data)
-        .catch(error => error);
+      return this.verifyPasswords(ctx.params)
+        ? User
+          .register(ctx.params)
+          .then(data => data)
+          .catch(error => error)
+        : { msg: 'password should be equal!' }
     }
   },
 
@@ -51,27 +52,29 @@ module.exports = {
    * Methods
    */
   methods: {
-
+    verifyPasswords (payload) {
+      return payload.password === payload.password_confimation
+    }
   },
 
   /**
    * Service created lifecycle event handler
    */
-  created() {
+  created () {
 
   },
 
   /**
    * Service started lifecycle event handler
    */
-  started() {
+  started () {
 
   },
 
   /**
    * Service stopped lifecycle event handler
    */
-  stopped() {
+  stopped () {
 
   }
 };
